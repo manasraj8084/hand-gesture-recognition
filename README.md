@@ -1,159 +1,656 @@
-# Hand Gesture Recognition
+Absolutely. Below is a **complete, corrected `README.md`** matching the version of your project that is currently working: Python 3.13, newer MediaPipe Tasks API, Windows volume control, and media controls.
 
-A real-time hand gesture recognition project built with **Python 3.13, OpenCV, and MediaPipe Hand Landmarker**.
+You can **copy everything inside the code block and paste it directly into your GitHub `README.md`**.
 
-The webcam captures live video, MediaPipe detects 21 hand landmarks, and the program analyzes finger positions to recognize common gestures.
+````markdown
+# ✋ Hand Gesture Recognition & Media Controller
 
-## Features
+A real-time hand gesture recognition project built with **Python, OpenCV, and MediaPipe Tasks API**.
 
-- Real-time webcam recognition
-- Supports up to two hands
-- 21-point hand landmark visualization
-- Open Palm
-- Fist
-- Thumbs Up
-- Thumbs Down
-- Victory / Peace
-- Pointing
-- Three fingers
-- Four fingers
-- Unknown gesture handling
+The system uses a webcam to detect hand landmarks and recognize different hand gestures. These gestures can then be used to control **Windows system volume and media playback** without touching the keyboard or mouse.
 
-## Tech Stack
+---
 
-- Python 3.13
-- OpenCV
-- MediaPipe Tasks API
+## 🚀 Features
 
-## Project Structure
+- Real-time hand gesture recognition using a webcam
+- MediaPipe Hand Landmarker
+- 21-point hand landmark detection
+- Supports one hand at a time
+- Real-time gesture detection
+- Windows system volume control
+- Media playback control
+- Gesture cooldown to prevent repeated actions
+- Visual hand landmark display
+- Works with Python 3.13
+- Uses the newer MediaPipe Tasks API
+
+---
+
+## 🎮 Gesture Controls
+
+| Hand Gesture | Action |
+|---|---|
+| 👍 Thumbs Up | Increase Volume |
+| 👎 Thumbs Down | Decrease Volume |
+| ✋ Open Palm | Play / Pause |
+| ✊ Fist | Stop Media |
+| ✌️ Victory / Peace | Mute / Unmute |
+| ☝️ Pointing | Next Track |
+
+### Volume Control
+
+- 👍 Thumbs Up → Increases Windows volume by 5%
+- 👎 Thumbs Down → Decreases Windows volume by 5%
+
+### Media Control
+
+- ✋ Open Palm → Play / Pause
+- ✊ Fist → Stop
+- ✌️ Victory → Mute / Unmute
+- ☝️ Pointing → Next Track
+
+> **Note:** Media-control behavior can depend on the application being used. Applications that support Windows media keys will respond best.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Python 3.13**
+- **OpenCV**
+- **MediaPipe Tasks API**
+- **MediaPipe Hand Landmarker**
+- **Pycaw**
+- **Comtypes**
+- **Windows API**
+
+---
+
+## 📁 Project Structure
 
 ```text
 hand-gesture-recognition/
+│
 ├── hand_gesture.py
-├── hand_landmarker.task        # downloaded separately
 ├── requirements.txt
 ├── README.md
+├── MODEL_DOWNLOAD.txt
 ├── .gitignore
+│
 └── screenshots/
-    └── demo.png                # optional
-```
+    └── demo.png
+````
 
-## 1. Clone the repository
+### Model File
 
-```bash
-git clone https://github.com/YOUR-USERNAME/hand-gesture-recognition.git
-cd hand-gesture-recognition
-```
-
-## 2. Install dependencies
-
-Recommended: create a virtual environment first.
-
-### Windows
-
-```powershell
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-Then:
-
-```powershell
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-## 3. Download the MediaPipe model
-
-Download the official Google MediaPipe Hand Landmarker model:
-
-https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task
-
-Save the downloaded file as:
+The project requires:
 
 ```text
 hand_landmarker.task
 ```
 
-Place it in the project root, beside `hand_gesture.py`.
+The model file should be placed in the project root directory:
 
-> The model is required at runtime. Check the applicable MediaPipe/model license before redistributing the model file in your repository.
+```text
+hand-gesture-recognition/
+│
+├── hand_gesture.py
+├── hand_landmarker.task
+├── requirements.txt
+└── README.md
+```
 
-## 4. Run the project
+The model file is not included in the GitHub repository. See `MODEL_DOWNLOAD.txt` for instructions on downloading it.
+
+---
+
+## 💻 Requirements
+
+Before running the project, make sure you have:
+
+* Windows 10 or Windows 11
+* Python 3.13
+* A working webcam
+* Internet connection for downloading the MediaPipe hand model
+
+> **Important:** The volume-control functionality uses Windows-specific APIs, so this version is designed for Windows.
+
+---
+
+# ⚙️ Installation
+
+## 1. Clone the Repository
+
+Open PowerShell or Command Prompt and run:
+
+```bash
+git clone https://github.com/manasraj8084/hand-gesture-recognition.git
+```
+
+Move into the project directory:
+
+```bash
+cd hand-gesture-recognition
+```
+
+---
+
+## 2. Create a Virtual Environment
+
+Create a Python virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+---
+
+## 3. Activate the Virtual Environment
+
+On Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+If you are using Command Prompt:
+
+```cmd
+.venv\Scripts\activate
+```
+
+After activation, you should see something similar to:
+
+```text
+(.venv)
+```
+
+at the beginning of your terminal.
+
+---
+
+## 4. Install Dependencies
+
+Install all required Python packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+The required packages are:
+
+```text
+opencv-python
+mediapipe
+pycaw
+comtypes
+```
+
+---
+
+# 📥 Download the Hand Model
+
+The project uses the **MediaPipe Hand Landmarker** model.
+
+You need the following file:
+
+```text
+hand_landmarker.task
+```
+
+Download the model and place it in the same folder as:
+
+```text
+hand_gesture.py
+```
+
+Your project should then look like:
+
+```text
+hand-gesture-recognition/
+│
+├── hand_gesture.py
+├── hand_landmarker.task
+├── requirements.txt
+└── README.md
+```
+
+See `MODEL_DOWNLOAD.txt` for the model download instructions.
+
+---
+
+# ▶️ Run the Project
+
+After installing the dependencies and placing the model file in the correct location, run:
 
 ```bash
 python hand_gesture.py
 ```
 
-Allow camera access if Windows asks for permission.
+Your webcam should open.
 
-Press **Q** to close the application.
+You should see the detected hand landmarks and the recognized gesture on the screen.
 
-## How It Works
+---
+
+# ✋ How It Works
+
+The project follows these steps:
 
 ```text
 Webcam
    ↓
-OpenCV frame capture
-   ↓
-BGR → RGB conversion
+OpenCV
    ↓
 MediaPipe Hand Landmarker
    ↓
-21 hand landmarks
+21 Hand Landmarks
    ↓
-Finger-position analysis
+Gesture Recognition
    ↓
-Gesture classification
+Gesture Action
    ↓
-Gesture displayed on webcam
+Windows / Media Control
 ```
 
-## Landmark Concept
+### Step 1 — Webcam Capture
 
-MediaPipe provides 21 hand landmarks:
+OpenCV captures frames from the computer's webcam.
 
-- `0` - Wrist
-- `1–4` - Thumb
-- `5–8` - Index finger
-- `9–12` - Middle finger
-- `13–16` - Ring finger
-- `17–20` - Pinky
+### Step 2 — Hand Detection
 
-The program uses these landmark positions to determine which fingers are extended.
+MediaPipe Hand Landmarker detects the hand in each frame.
 
-## Important Note
+### Step 3 — Landmark Detection
 
-This is a rule-based gesture recognizer built on top of MediaPipe's hand landmark detection. It is not a separately trained neural network for gesture classes.
+MediaPipe identifies **21 landmarks** on the hand.
 
-Accuracy can vary with:
+These landmarks represent important points such as:
 
-- Hand orientation
-- Lighting
-- Camera angle
-- Occlusion
-- Distance from camera
-- Different hand poses
+* Wrist
+* Thumb
+* Index finger
+* Middle finger
+* Ring finger
+* Pinky finger
 
-## Future Improvements
+### Step 4 — Gesture Recognition
 
-- Add more gestures
-- Add left/right hand-specific logic
-- Improve thumb orientation detection
-- Add gesture smoothing to reduce flickering
-- Add gesture-controlled mouse
-- Add volume control
-- Add media controls
-- Add screenshot capture
-- Create a graphical user interface
-- Add a custom machine-learning classifier
+The positions of the landmarks are analyzed to determine which fingers are extended.
 
-## License
+The program then classifies the hand into a gesture such as:
 
-This repository contains original project code. Third-party libraries and the MediaPipe model are subject to their respective licenses and terms.
+```text
+THUMBS UP
+THUMBS DOWN
+OPEN PALM
+FIST
+VICTORY
+POINTING
+```
 
-## Author
+### Step 5 — Action
 
-**Your Name**
+The recognized gesture is converted into a system command.
 
-GitHub: https://github.com/YOUR-USERNAME
+For example:
+
+```text
+THUMBS UP
+     ↓
+Volume +5%
+```
+
+or:
+
+```text
+OPEN PALM
+     ↓
+Play / Pause
+```
+
+---
+
+# 🧠 Gesture Recognition Logic
+
+The program checks whether individual fingers are extended or folded.
+
+For example:
+
+```text
+Thumb  → Extended / Folded
+Index  → Extended / Folded
+Middle → Extended / Folded
+Ring   → Extended / Folded
+Pinky  → Extended / Folded
+```
+
+The combination of these states is used to identify the gesture.
+
+For example:
+
+```text
+0 fingers → Fist
+5 fingers → Open Palm
+Thumb only → Thumbs Up / Down
+Index + Middle → Victory
+Index only → Pointing
+```
+
+---
+
+# ⏱️ Gesture Cooldown
+
+The project includes an action cooldown to prevent the same gesture from triggering an action continuously.
+
+For example, without a cooldown:
+
+```text
+👍 👍 👍 👍 👍 👍
+↓  ↓  ↓  ↓  ↓  ↓
+Volume changes repeatedly
+```
+
+With the cooldown:
+
+```text
+👍
+↓
+Volume +5%
+↓
+Wait
+↓
+👍
+↓
+Volume +5%
+```
+
+This makes the system more stable and practical.
+
+---
+
+# 🔊 Windows Volume Control
+
+The project uses **Pycaw** to control the Windows system volume.
+
+### Volume Up
+
+```text
+👍 Thumbs Up
+       ↓
+Windows Volume +5%
+```
+
+### Volume Down
+
+```text
+👎 Thumbs Down
+       ↓
+Windows Volume -5%
+```
+
+---
+
+# 🎵 Media Control
+
+The project uses Windows media-key commands to control supported media applications.
+
+```text
+✋ Open Palm
+      ↓
+Play / Pause
+```
+
+```text
+✊ Fist
+    ↓
+Stop
+```
+
+```text
+✌️ Victory
+     ↓
+Mute / Unmute
+```
+
+```text
+☝️ Pointing
+      ↓
+Next Track
+```
+
+> Media controls depend on whether the application supports Windows media-key commands.
+
+---
+
+# 📸 Demo
+
+Add screenshots or a GIF of your project here.
+
+Example:
+
+```markdown
+![Hand Gesture Recognition Demo](screenshots/demo.png)
+```
+
+You can also add a project demonstration video or GIF to show the gestures working in real time.
+
+---
+
+# 🎯 Applications
+
+This project can be used as a foundation for:
+
+* Touchless computer interaction
+* Smart media control
+* Accessibility systems
+* Human-computer interaction
+* Computer vision projects
+* Gesture-based interfaces
+* Smart home control systems
+* Educational computer vision projects
+
+---
+
+# 🔮 Future Improvements
+
+Possible improvements include:
+
+* Add more hand gestures
+* Support two-hand recognition
+* Improve gesture accuracy
+* Add gesture smoothing
+* Add left-hand and right-hand specific gestures
+* Add mouse cursor control
+* Add screen brightness control
+* Add application-specific controls
+* Add previous-track control
+* Add custom user-defined gestures
+* Add a graphical user interface
+* Improve gesture recognition under different lighting conditions
+
+---
+
+# ⚠️ Limitations
+
+* The current version supports one hand at a time.
+* Gesture recognition can be affected by poor lighting.
+* The hand should be visible to the webcam.
+* Fast hand movements may sometimes be misclassified.
+* Different camera positions can affect recognition.
+* Media-key behavior depends on the application.
+* Volume control is currently designed for Windows.
+
+---
+
+# 🐛 Troubleshooting
+
+## Camera Does Not Open
+
+Make sure:
+
+* Your webcam is connected.
+* No other application is using the webcam.
+* Camera permissions are enabled in Windows.
+
+You can also try changing:
+
+```python
+cv2.VideoCapture(0)
+```
+
+to:
+
+```python
+cv2.VideoCapture(1)
+```
+
+if your computer has multiple cameras.
+
+---
+
+## Model Not Found
+
+If you see:
+
+```text
+ERROR: hand_landmarker.task was not found.
+```
+
+make sure:
+
+```text
+hand_landmarker.task
+```
+
+is located in the same directory as:
+
+```text
+hand_gesture.py
+```
+
+---
+
+## Pycaw Error
+
+If you see:
+
+```text
+ModuleNotFoundError: No module named 'pycaw'
+```
+
+run:
+
+```bash
+pip install pycaw comtypes
+```
+
+or:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## MediaPipe Error
+
+Make sure MediaPipe is installed:
+
+```bash
+pip install mediapipe
+```
+
+Then check the installed version:
+
+```bash
+pip show mediapipe
+```
+
+---
+
+# 🔐 Security / Privacy
+
+The project processes webcam frames locally on the computer.
+
+No webcam frames are intentionally uploaded to a server by this application.
+
+The project does not require a cloud API for hand gesture recognition.
+
+---
+
+# 📊 Accuracy
+
+This project is intended as a real-time computer vision demonstration rather than a formally benchmarked machine-learning model.
+
+Therefore, no fixed accuracy percentage is claimed.
+
+Recognition performance depends on:
+
+* Lighting conditions
+* Camera quality
+* Hand position
+* Distance from camera
+* Background
+* Hand orientation
+* Movement speed
+
+For a formal accuracy measurement, a labeled test dataset and evaluation procedure would be required.
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+If you want to improve this project:
+
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Test the project.
+5. Commit your changes.
+6. Push the branch.
+7. Open a Pull Request.
+
+Example:
+
+```bash
+git checkout -b feature/new-gesture
+```
+
+Then:
+
+```bash
+git add .
+git commit -m "Added new gesture"
+git push origin feature/new-gesture
+```
+
+---
+
+# 📜 License
+
+This project is intended for educational and research purposes.
+
+If you choose to publish this project under a specific open-source license, add the corresponding license file to the repository.
+
+---
+
+# 👨‍💻 Author
+
+**Manas Raj**
+
+GitHub:
+
+```text
+https://github.com/manasraj8084
+```
+
+---
+
+# ⭐ If You Like This Project
+
+If you find this project useful or interesting, consider giving the repository a ⭐ on GitHub.
+
+Thank you for checking out the project!
