@@ -1,0 +1,5 @@
+# MediaPipe model
+
+The `hand_landmarker.task` model is intentionally not included in this starter repository.
+
+Download it from the official Google-hosted URL in `README.md` and place it in this directory.
